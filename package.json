@@ -1,0 +1,9 @@
+{
+  "name": "our-ui",
+  "version": "1.0.0",
+  "description": "UI components lib.",
+  "main": "index.js",
+  "repository": "https://github.com/oddVlad/our-ui.git",
+  "author": "Vlad Zyshchuk",
+  "license": "MIT"
+}
