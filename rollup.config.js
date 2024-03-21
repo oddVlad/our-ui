@@ -22,13 +22,15 @@ export default {
     ],
     plugins: [
         peerDepsExternal(),
+        postcss({
+            extract: false,
+            modules: true,
+            use: ['sass'],
+        }),
         resolve(),
         commonjs(),
         typescript({
             useTsconfigDeclarationDir: true,
-        }),
-        postcss({
-            extensions: ['.css'],
         }),
     ],
 };
