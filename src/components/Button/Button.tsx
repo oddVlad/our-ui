@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styles from './styles.module.scss';
 
-export interface IButtonProps extends React.ComponentPropsWithoutRef<'button'> {
+export interface IButtonProps
+    extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     size?: 'small' | 'medium' | 'large';
     color?: 'primary' | 'secondary' | 'success' | 'error';
     variant?: 'text' | 'outlined' | 'contained';
@@ -9,28 +10,35 @@ export interface IButtonProps extends React.ComponentPropsWithoutRef<'button'> {
     children?: JSX.Element | string | JSX.Element[];
 }
 
-const Button = ({
-    size = 'medium',
-    color = 'primary',
-    variant = 'text',
-    children = 'Button',
-    upper = true,
-    ...props
-}: IButtonProps) => {
-    return (
-        <button
-            className={[
-                styles.button_root,
-                styles[size],
-                styles[color],
-                styles[variant],
-                upper && styles.upper,
-            ].join(' ')}
-            {...props}
-        >
-            {children}
-        </button>
-    );
-};
+const Button = forwardRef<HTMLButtonElement, IButtonProps>(
+    (
+        {
+            size = 'medium',
+            color = 'primary',
+            variant = 'text',
+            upper = true,
+            children = 'Button',
+            ...props
+        },
+        ref
+    ) => {
+        return (
+            <button
+                ref={ref}
+                className={[
+                    styles.button_root,
+                    styles[size],
+                    styles[color],
+                    styles[variant],
+                    upper && styles.upper,
+                ].join(' ')}
+                {...props}
+            >
+                {children}
+            </button>
+        );
+    }
+);
 
+Button.displayName = 'Button';
 export default Button;
