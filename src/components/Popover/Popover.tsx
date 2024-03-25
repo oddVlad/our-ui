@@ -28,7 +28,7 @@ const Popover = ({
             document.removeEventListener('mousedown', handleClickOutside);
             document.removeEventListener('keydown', handleEscKeyPress);
         };
-    });
+    }, [open]);
 
     useEffect(() => {
         handleResize();
