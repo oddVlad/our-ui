@@ -1,21 +1,14 @@
 @use '../../styles/colors' as color;
 
-
-.popover{
-    background-color: color.$gray-light;
-    border: 1px solid color.$gray;
-    border-radius: 16px;
+.popover_content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+    background-color: white;
+    border: 1px solid color.$gray-light;
+    border-radius: 8px;
     padding: 16px;
-    visibility: hidden;
-    transform: translateY(-20%);
-    opacity: 0;
-    transition: 
-        transform .2s ease,
-        opacity .2s ease;
-
-    &.open{
-        visibility: visible;
-        transform: translateY(-20%);
-        opacity: 1;
-    }
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
