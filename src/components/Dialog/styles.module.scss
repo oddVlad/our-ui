@@ -19,9 +19,11 @@
     border-radius: 8px;
     padding: 16px;
     cursor: auto;
-    
+
     &.dialog_screen{
-        width: 100%;
-        height: 100%;
+        max-width: none;
+        inset: 0;
+        transform: none;
+        border-radius: 0;
     }
 }
