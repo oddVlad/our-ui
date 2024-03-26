@@ -9,40 +9,42 @@ const meta = {
     parameters: {
         layout: 'centered',
     },
+    argTypes: {
+        checked: {
+            control: { type: 'none' },
+        },
+    },
     tags: ['autodocs'],
 } satisfies Meta<typeof Checkbox>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
-export const Primary = () => {
-    const [value, setValue] = useState(true);
-    const handleChange = () => {
+export const Default = (props: Story) => {
+    const [value, setValue] = useState<boolean>(true);
+    const handleChange = (): void => {
         setValue(!value);
     };
 
-    return <Checkbox checked={value} onChange={handleChange} />;
+    return <Checkbox checked={value} onChange={handleChange} {...props} />;
 };
 
-export const Color: Story = {
-    render: () => (
-        <Flex gap={10}>
-            <Checkbox color="primary" checked />
-            <Checkbox color="secondary" checked />
-            <Checkbox color="success" checked />
-            <Checkbox color="error" checked />
-            <Checkbox checked disabled />
-            <Checkbox disabled />
-        </Flex>
-    ),
-};
+export const Color = () => (
+    <Flex gap={10}>
+        <Checkbox color="primary" checked />
+        <Checkbox color="secondary" checked />
+        <Checkbox color="success" checked />
+        <Checkbox color="error" checked />
+        <Checkbox checked disabled />
+        <Checkbox disabled checked={false} />
+    </Flex>
+);
 
-export const Size: Story = {
-    render: () => (
-        <Flex gap={10}>
-            <Checkbox checked iconSize="small" />
-            <Checkbox checked />
-            <Checkbox checked iconSize="large" />
-        </Flex>
-    ),
-};
+export const Size = () => (
+    <Flex gap={10}>
+        <Checkbox checked iconSize="small" />
+        <Checkbox checked />
+        <Checkbox checked iconSize="large" />
+    </Flex>
+);

@@ -83,11 +83,17 @@
         }
     }
 
-    &:disabled + .checkbox {
+    &:disabled:checked + .checkbox{
         pointer-events: none;
-        background-color: color.$gray-light !important;
-        box-shadow: 0px 0px 0px 3px rgba(color.$gray, 0.1) !important;
-        border-color: color.$gray-light !important;
+        background-color: color.$gray-light;
+        box-shadow: 0px 0px 0px 3px rgba(color.$gray, 0.1);
+        border-color: color.$gray-light;
+    }
+    &:disabled:not(:checked) + .checkbox {
+        pointer-events: none;
+        background-color: white;
+        box-shadow: 0px 0px 0px 3px rgba(color.$gray, 0.1);
+        border-color: color.$gray-light;
     }
 }
 
