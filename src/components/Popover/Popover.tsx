@@ -77,5 +77,4 @@ const Popover = ({
     );
 };
 
-Popover.displayName = 'Popover';
 export default Popover;

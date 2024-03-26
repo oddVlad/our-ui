@@ -25,6 +25,7 @@ export const Default = () => {
     const handleCloseDialog = (): void => {
         setOpenDialog(false);
     };
+
     return (
         <>
             <Button onClick={handleToggleDialog} variant="outlined">
@@ -58,6 +59,7 @@ export const FullScreen = () => {
     const handleCloseDialog = (): void => {
         setOpenDialog(false);
     };
+
     return (
         <>
             <Button onClick={handleToggleDialog} variant="outlined">
