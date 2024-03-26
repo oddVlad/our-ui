@@ -1,34 +1,28 @@
 import React, { RefObject, useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
+import useClickOutside from '../../hooks/useClickOutside';
+import useKeyPerss from '../../hooks/useKeyPress';
 
 export interface IPopoverProps {
-    open?: boolean;
+    isOpen?: boolean;
     children?: JSX.Element | string | JSX.Element[];
-    anchorEl?: RefObject<HTMLButtonElement> | null;
+    anchorEl: RefObject<HTMLElement>;
     margin?: number;
     onClose?: () => void;
 }
 
 const Popover = ({
-    open = false,
-    anchorEl = null,
+    isOpen = false,
+    anchorEl,
     margin = 10,
     onClose = () => {},
     children = 'Popover content.',
 }: IPopoverProps) => {
     const popoverRef = useRef<HTMLElement>(null);
-    const [position, setPosition] = useState({ top: 0, left: 0 });
+    const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
 
-    useEffect(() => {
-        if (!popoverRef.current) return;
-        document.addEventListener('mousedown', handleClickOutside);
-        document.addEventListener('keydown', handleEscKeyPress);
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-            document.removeEventListener('keydown', handleEscKeyPress);
-        };
-    }, [open]);
+    useClickOutside(onClose, [popoverRef, anchorEl]);
+    useKeyPerss(onClose, 'Escape');
 
     useEffect(() => {
         handleResize();
@@ -37,44 +31,25 @@ const Popover = ({
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, [anchorEl, open]);
-
-    const handleClickOutside = (event: MouseEvent) => {
-        if (
-            popoverRef.current &&
-            !popoverRef.current.contains(event.target as Node) &&
-            open &&
-            anchorEl?.current !== event.target
-        ) {
-            onClose();
-        }
-    };
-
-    const handleEscKeyPress = (event: KeyboardEvent): void => {
-        if (event.key === 'Escape') {
-            onClose();
-        }
-    };
+    }, [anchorEl, isOpen]);
 
     const handleResize = () => {
-        if (anchorEl?.current && popoverRef.current && open) {
+        if (anchorEl?.current && popoverRef.current && isOpen) {
             const { top, left, height } =
                 anchorEl.current.getBoundingClientRect();
-            setPosition({ top: top + height + margin, left });
+            setPopoverPosition({ top: top + height + margin, left });
         }
     };
 
-    return (
-        open && (
-            <div
-                className={styles.popover_content}
-                style={{ top: position.top, left: position.left }}
-                ref={popoverRef as RefObject<HTMLDivElement>}
-            >
-                {children}
-            </div>
-        )
-    );
+    return isOpen ? (
+        <div
+            className={styles.popover_content}
+            style={{ top: popoverPosition.top, left: popoverPosition.left }}
+            ref={popoverRef as RefObject<HTMLDivElement>}
+        >
+            {children}
+        </div>
+    ) : null;
 };
 
 export default Popover;
