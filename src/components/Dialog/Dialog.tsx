@@ -5,7 +5,7 @@ export interface IDialogProps {
     open?: boolean;
     onClose?: () => void;
     screen?: boolean;
-    children: JSX.Element | string | JSX.Element[];
+    children?: JSX.Element | string | JSX.Element[];
 }
 
 const Dialog = ({
