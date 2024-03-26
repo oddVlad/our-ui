@@ -23,15 +23,13 @@ const Checkbox = forwardRef<HTMLInputElement, ICheckboxProps>(
         ref
     ) => {
         const [isChecked, setChecked] = useState<boolean>(checked);
-        console.log('checked ', checked);
 
         const clickHandler = (
             event: React.MouseEvent<HTMLElement, MouseEvent>
         ): void => {
             event.preventDefault();
             if (!onChange) {
-                console.log('inside ' + isChecked);
-                setChecked(!isChecked);
+                setChecked((prev) => !prev);
             } else {
                 onChange();
             }

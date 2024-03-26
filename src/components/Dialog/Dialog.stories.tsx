@@ -31,7 +31,7 @@ export const Default = () => {
             <Button onClick={handleToggleDialog} variant="outlined">
                 toggle dialog
             </Button>
-            <Dialog open={isOpenDialog} onClose={handleCloseDialog}>
+            <Dialog isOpen={isOpenDialog} onClose={handleCloseDialog}>
                 <Flex direction="column" gap={15}>
                     <p>
                         Lorem ipsum, dolor sit amet consectetur adipisicing
@@ -50,14 +50,14 @@ export const Default = () => {
 };
 
 export const FullScreen = () => {
-    const [isOpenDialog, setOpenDialog] = useState<boolean>(false);
+    const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
 
     const handleToggleDialog = (): void => {
-        setOpenDialog(!isOpenDialog);
+        setDialogOpen((prev) => !prev);
     };
 
     const handleCloseDialog = (): void => {
-        setOpenDialog(false);
+        setDialogOpen(false);
     };
 
     return (
@@ -65,7 +65,7 @@ export const FullScreen = () => {
             <Button onClick={handleToggleDialog} variant="outlined">
                 Full Screen
             </Button>
-            <Dialog open={isOpenDialog} onClose={handleCloseDialog} screen>
+            <Dialog isOpen={isDialogOpen} onClose={handleCloseDialog} isScreen>
                 <Flex direction="column" gap={15}>
                     <p>
                         Lorem ipsum, dolor sit amet consectetur adipisicing
