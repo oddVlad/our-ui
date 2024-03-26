@@ -1,5 +1,6 @@
 .flex {
     display: flex;
+    
     &.column {
         flex-direction: column;
     }
@@ -26,5 +27,8 @@
     }
     &.content-evenly {
         justify-content: space-evenly;
+    }
+    &.wrap{
+        flex-wrap: wrap;
     }
 }
