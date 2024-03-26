@@ -11,13 +11,13 @@ const config: StorybookConfig = {
         '@storybook/addon-interactions',
         '@storybook/preset-scss',
     ],
-    framework: {
-        name: '@storybook/react-webpack5',
-        options: { fsCache: true, lazyCompilation: true },
-    },
+    framework: '@storybook/react-webpack5',
     docs: {
-        docsMode: true,
         autodocs: 'tag',
+        defaultName: 'Overview',
+    },
+    typescript: {
+        reactDocgen: 'react-docgen-typescript',
     },
 };
 export default config;
