@@ -1,0 +1,13 @@
+@use '../../styles/colors' as color;
+
+.popover_content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+    background-color: white;
+    border: 1px solid color.$gray-light;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,167 @@
+@use '../../styles/colors' as color;
+
+.button_root {
+    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    border: 0;
+    border-radius: 1000px;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+
+    &.primary {
+        color: color.$primary;
+        background-color: color.$primary;
+        border-color: color.$primary;
+
+        &:not(.contained):hover {
+            background: rgba(color.$primary, 0.1);
+        }
+
+        &:not(.contained):active {
+            background: rgba(color.$primary, 0.2);
+        }
+
+        &:focus {
+            outline-offset: 2px;
+            outline: 2px solid color.$primary-dark;
+        }
+
+        &.contained:hover{
+            background: rgba(color.$primary-dark, .8);
+        }
+
+        &.contained:active{
+            background: rgba(color.$primary-dark, 1);
+        }
+    }
+
+    &.secondary {
+        color: color.$secondary;
+        background-color: color.$secondary;
+        border-color: color.$secondary;
+
+        &:not(.contained):hover {
+            background: rgba(color.$secondary, 0.1);
+        }
+
+        &:not(.contained):active {
+            background: rgba(color.$secondary, 0.2);
+        }
+
+        &:focus {
+            outline-offset: 2px;
+            outline: 2px solid color.$secondary-dark;
+        }
+
+        &.contained:hover{
+            background: rgba(color.$secondary-dark, .8);
+        }
+
+        &.contained:active{
+            background: rgba(color.$secondary-dark, 1);
+        }
+    }
+
+    &.success {
+        color: color.$success;
+        background-color: color.$success;
+        border-color: color.$success;
+
+        &:not(.contained):hover {
+            background: rgba(color.$success, 0.1);
+        }
+
+        &:not(.contained):active {
+            background: rgba(color.$success, 0.2);
+        }
+
+        &:focus {
+            outline-offset: 2px;
+            outline: 2px solid color.$success-dark;
+        }
+
+        &.contained:hover{
+            background: rgba(color.$success-dark, .8);
+        }
+
+        &.contained:active{
+            background: rgba(color.$success-dark, 1);
+        }
+    }
+
+    &.error {
+        color: color.$error;
+        background-color: color.$error;
+        border-color: color.$error;
+
+        &:not(.contained):hover {
+            background: rgba(color.$error, 0.1);
+        }
+
+        &:not(.contained):active {
+            background: rgba(color.$error, 0.2);
+        }
+
+        &:focus {
+            outline-offset: 2px;
+            outline: 2px solid color.$error-dark;
+        }
+
+        &.contained:hover{
+            background: rgba(color.$error-dark, .8);
+        }
+
+        &.contained:active{
+            background: rgba(color.$error-dark, 1);
+        }
+    }
+
+    &.small {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    &.medium {
+        font-size: 14px;
+        padding: 11px 20px;
+    }
+
+    &.large {
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+
+    &.text {
+        background: transparent;
+    }
+
+    &.outlined {
+        background: transparent;
+        border: 1px;
+        border-style: solid;
+    }
+
+    &.contained {
+        color: white;
+    }
+
+    &:disabled {
+        pointer-events: none;
+        color: color.$disabled;
+        background-color: color.$disabled-light;
+        border-color: color.$disabled;
+    }
+
+        &:focus:not(:focus-visible) {
+            outline: none;
+        }
+}
+
+.upper {
+    text-transform: uppercase;
+}

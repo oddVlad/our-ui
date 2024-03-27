@@ -1,0 +1,10 @@
+@import 'normalize';
+@import 'colors';
+@import 'variables';
+
+body{
+    &.stop_scrolling{ // needed for close page scrolling. 
+        height: 100%;
+        overflow: hidden
+    }
+}
