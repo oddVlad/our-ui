@@ -6,7 +6,7 @@ export interface IButtonProps
     size?: 'small' | 'medium' | 'large';
     color?: 'primary' | 'secondary' | 'success' | 'error';
     variant?: 'text' | 'outlined' | 'contained';
-    upper?: boolean;
+    isUpper?: boolean;
     children?: JSX.Element | string | JSX.Element[];
 }
 
@@ -16,7 +16,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
             size = 'medium',
             color = 'primary',
             variant = 'text',
-            upper = true,
+            isUpper = true,
             children = 'Button',
             ...props
         },
@@ -30,7 +30,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
                     styles[size],
                     styles[color],
                     styles[variant],
-                    upper && styles.upper,
+                    isUpper && styles.upper,
                 ].join(' ')}
                 {...props}
             >

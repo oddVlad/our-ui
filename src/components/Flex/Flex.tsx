@@ -10,7 +10,7 @@ export interface IFlexProps {
         | 'content-around'
         | 'content-evenly';
     gap?: number;
-    wrap?: boolean;
+    isWrapped?: boolean;
     children?: JSX.Element | string | JSX.Element[];
 }
 
@@ -19,7 +19,7 @@ const Flex = ({
     align = 'align-center',
     content = 'content-center',
     gap = 0,
-    wrap = true,
+    isWrapped = true,
     children = '',
 }: IFlexProps) => {
     return (
@@ -29,7 +29,7 @@ const Flex = ({
                 styles[direction],
                 styles[align],
                 styles[content],
-                wrap && styles.wrap,
+                isWrapped && styles.wrap,
             ].join(' ')}
             style={{ gap: `${gap}px` }}
         >

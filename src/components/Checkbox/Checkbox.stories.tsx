@@ -22,22 +22,22 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = (props: Story) => {
-    const [value, setValue] = useState<boolean>(true);
+    const [isChecked, setChecked] = useState<boolean>(true);
     const handleChange = (): void => {
-        setValue(!value);
+        setChecked((prev) => !prev);
     };
 
-    return <Checkbox checked={value} onChange={handleChange} {...props} />;
+    return <Checkbox checked={isChecked} onChange={handleChange} {...props} />;
 };
 
 export const Color = () => (
     <Flex gap={10}>
-        <Checkbox color="primary" checked />
-        <Checkbox color="secondary" checked />
-        <Checkbox color="success" checked />
-        <Checkbox color="error" checked />
-        <Checkbox checked disabled />
-        <Checkbox disabled checked={false} />
+        <Checkbox color="primary" checked title="primary" />
+        <Checkbox color="secondary" checked title="secondary" />
+        <Checkbox color="success" checked title="success" />
+        <Checkbox color="error" checked title="error" />
+        <Checkbox checked disabled title="checked disabled" />
+        <Checkbox disabled title="disabled" />
     </Flex>
 );
 

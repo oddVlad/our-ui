@@ -36,14 +36,6 @@
         border-color: color.$error;
         background-color: rgba(color.$error, 0.1);
     }
-
-    &:active {
-        box-shadow: none;
-    }
-
-    &:focus:not(:focus-visible) {
-        outline: none;
-    }
 }
 
 .hidden_checkbox {
@@ -51,30 +43,28 @@
     top: 0;
     left: 0;
     z-index: -1;
-    visibility: hidden;
+    width: 0;
+    height: 0;
+    opacity: 0;
 
     &:checked + .checkbox {
         &.primary {
             background-color: color.$primary;
-            box-shadow: 0px 0px 0px 3px color.$primary-light;
             border-color: color.$primary;
         }
 
         &.secondary {
             background-color: color.$secondary;
-            box-shadow: 0px 0px 0px 3px color.$secondary-light;
             border-color: color.$secondary;
         }
 
         &.success {
             background-color: color.$success;
-            box-shadow: 0px 0px 0px 3px color.$success-light;
             border-color: color.$success;
         }
 
         &.error {
             background-color: color.$error;
-            box-shadow: 0px 0px 0px 3px color.$error-light;
             border-color: color.$error;
         }
 
@@ -83,32 +73,38 @@
         }
     }
 
-    &:disabled:checked + .checkbox{
+    &:disabled:checked + .checkbox {
         pointer-events: none;
         background-color: color.$gray-light;
-        box-shadow: 0px 0px 0px 3px rgba(color.$gray, 0.1);
         border-color: color.$gray-light;
     }
     &:disabled:not(:checked) + .checkbox {
         pointer-events: none;
         background-color: white;
-        box-shadow: 0px 0px 0px 3px rgba(color.$gray, 0.1);
         border-color: color.$gray-light;
+    }
+    &:not(:checked) + .checkbox:active {
+        box-shadow: none;
+    }
+
+    &:focus + .checkbox {
+        outline: 2px solid black;
+        outline-offset: 2px;
     }
 }
 
 .checkbox_mark {
     fill: white;
 
-    &.small{
+    &.small {
         width: 20px;
         height: 20px;
     }
-    &.medium{
+    &.medium {
         width: 35px;
         height: 35px;
     }
-    &.large{
+    &.large {
         width: 50px;
         height: 50px;
     }

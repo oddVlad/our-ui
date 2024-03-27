@@ -5,7 +5,7 @@ export interface ICheckboxProps
     extends React.InputHTMLAttributes<HTMLInputElement> {
     color?: 'primary' | 'secondary' | 'success' | 'error';
     iconSize?: 'small' | 'medium' | 'large';
-    checked: boolean;
+    checked?: boolean;
     disabled?: boolean;
     onChange?: () => void;
 }
@@ -16,26 +16,22 @@ const Checkbox = forwardRef<HTMLInputElement, ICheckboxProps>(
             onChange,
             iconSize = 'medium',
             color = 'primary',
-            checked,
+            checked = false,
             disabled = false,
             ...props
         },
         ref
     ) => {
         const [isChecked, setChecked] = useState<boolean>(checked);
-        console.log('checked ', checked);
 
-        const clickHandler = (
-            event: React.MouseEvent<HTMLElement, MouseEvent>
-        ): void => {
-            event.preventDefault();
+        const handleChange = (): void => {
             if (!onChange) {
-                console.log('inside ' + isChecked);
-                setChecked(!isChecked);
+                setChecked((prev) => !prev);
             } else {
                 onChange();
             }
         };
+
         return (
             <div className={styles.checkbox_container}>
                 <input
@@ -44,11 +40,12 @@ const Checkbox = forwardRef<HTMLInputElement, ICheckboxProps>(
                     checked={onChange ? checked : isChecked}
                     className={styles.hidden_checkbox}
                     disabled={disabled}
+                    onChange={handleChange}
                     {...props}
                 />
                 <div
                     className={[styles.checkbox, styles[color]].join(' ')}
-                    onClick={clickHandler}
+                    onClick={handleChange}
                     {...props}
                 >
                     <svg
