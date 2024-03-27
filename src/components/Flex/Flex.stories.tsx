@@ -46,7 +46,7 @@ export const Column = {
 export const Wrapped = {
     args: {
         gap: 20,
-        wrap: true,
+        isWrapped: true,
     },
     render: (args) => (
         <div style={{ width: '200px' }}>
