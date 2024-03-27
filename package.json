@@ -1,5 +1,5 @@
 {
-    "name": "our-ui",
+    "name": "@oddvlad/our-ui",
     "version": "1.0.0",
     "description": "UI components library",
     "type": "module",
