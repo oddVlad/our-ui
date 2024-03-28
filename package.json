@@ -1,6 +1,6 @@
 {
     "name": "@oddvlad/our-ui",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "UI components library",
     "type": "module",
     "main": "lib/index.js",
@@ -21,8 +21,7 @@
         "build": "rollup -c",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
-        "chromatic": "npx chromatic",
-        "publish": "yarn build && npm publish && yarn pack"
+        "chromatic": "npx chromatic"
     },
     "keywords": [
         "ourui",
