@@ -2,10 +2,10 @@
 
 .checkbox_container {
     position: relative;
-    width: fit-content;
 }
 
 .checkbox {
+    width: fit-content;
     border: 2px solid color.$gray-light;
     background-color: rgba(color.$gray-light, 0.1);
     border-radius: 20%;

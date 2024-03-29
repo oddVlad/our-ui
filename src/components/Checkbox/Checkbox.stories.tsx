@@ -53,3 +53,42 @@ export const Size = () => (
         <Checkbox checked iconSize="large" />
     </Flex>
 );
+
+export const Indeterminate = () => {
+    const [checked, setChecked] = React.useState([false, true]);
+
+    const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setChecked([event.target.checked, event.target.checked]);
+    };
+
+    const handleChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setChecked([event.target.checked, checked[1]]);
+    };
+
+    const handleChange3 = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setChecked([checked[0], event.target.checked]);
+    };
+
+    return (
+        <Flex direction="column" align="none" content="content-center">
+            <label style={{ display: 'flex', alignItems: 'center' }}>
+                <Checkbox
+                    checked={checked[0] && checked[1]}
+                    isIndeterminate={checked[0] || checked[1]}
+                    onChange={handleChange1}
+                />
+                Parent
+            </label>
+            <div style={{ marginLeft: '40px' }}>
+                <label style={{ display: 'flex', alignItems: 'center' }}>
+                    <Checkbox checked={checked[0]} onChange={handleChange2} />
+                    Child 1
+                </label>
+                <label style={{ display: 'flex', alignItems: 'center' }}>
+                    <Checkbox checked={checked[1]} onChange={handleChange3} />
+                    Child 2
+                </label>
+            </div>
+        </Flex>
+    );
+};

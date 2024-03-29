@@ -3,12 +3,13 @@ import styles from './styles.module.scss';
 
 export interface IFlexProps {
     direction?: 'row' | 'column';
-    align?: 'align-center' | 'align-baseline' | 'align-end';
+    align?: 'align-center' | 'align-baseline' | 'align-end' | 'none';
     content?:
         | 'content-center'
         | 'content-between'
         | 'content-around'
-        | 'content-evenly';
+        | 'content-evenly'
+        | 'none';
     gap?: number;
     isWrapped?: boolean;
     children?: JSX.Element | string | JSX.Element[];
@@ -16,8 +17,8 @@ export interface IFlexProps {
 
 const Flex = ({
     direction = 'row',
-    align = 'align-center',
-    content = 'content-center',
+    align = 'none',
+    content = 'none',
     gap = 0,
     isWrapped = true,
     children = '',

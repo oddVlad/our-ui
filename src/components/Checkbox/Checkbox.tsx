@@ -1,5 +1,6 @@
 import React, { forwardRef, useState } from 'react';
 import CheckIcon from '../../../assets/icons/check.svg';
+import IndIcon from '../../../assets/icons/minus.svg';
 import styles from './styles.module.scss';
 
 export interface ICheckboxProps
@@ -8,9 +9,8 @@ export interface ICheckboxProps
     iconSize?: 'small' | 'medium' | 'large';
     checked?: boolean;
     disabled?: boolean;
-    onChange?: (
-        event: React.ChangeEvent<HTMLInputElement | HTMLFormElement>
-    ) => void;
+    isIndeterminate?: boolean;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Checkbox = forwardRef<HTMLInputElement, ICheckboxProps>(
@@ -20,6 +20,7 @@ const Checkbox = forwardRef<HTMLInputElement, ICheckboxProps>(
             iconSize = 'medium',
             color = 'primary',
             checked = false,
+            isIndeterminate = false,
             disabled = false,
             ...props
         },
@@ -36,7 +37,9 @@ const Checkbox = forwardRef<HTMLInputElement, ICheckboxProps>(
                 <input
                     ref={ref}
                     type="checkbox"
-                    checked={onChange ? checked : isChecked}
+                    checked={
+                        (onChange ? checked : isChecked) || isIndeterminate
+                    }
                     className={styles.hidden_checkbox}
                     disabled={disabled}
                     onChange={onChange || handleChange}
@@ -47,12 +50,21 @@ const Checkbox = forwardRef<HTMLInputElement, ICheckboxProps>(
                     onClick={!onChange ? handleChange : undefined}
                     {...props}
                 >
-                    <CheckIcon
-                        className={[
-                            styles.checkbox_mark,
-                            styles[iconSize],
-                        ].join(' ')}
-                    />
+                    {isIndeterminate && !checked ? (
+                        <IndIcon
+                            className={[
+                                styles.checkbox_mark,
+                                styles[iconSize],
+                            ].join(' ')}
+                        />
+                    ) : (
+                        <CheckIcon
+                            className={[
+                                styles.checkbox_mark,
+                                styles[iconSize],
+                            ].join(' ')}
+                        />
+                    )}
                 </div>
             </div>
         );
