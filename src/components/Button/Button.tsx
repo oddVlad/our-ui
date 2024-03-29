@@ -7,6 +7,7 @@ export interface IButtonProps
     color?: 'primary' | 'secondary' | 'success' | 'error';
     variant?: 'text' | 'outlined' | 'contained';
     isUpper?: boolean;
+    fullWidth?: boolean;
     children?: JSX.Element | string | JSX.Element[];
 }
 
@@ -17,6 +18,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
             color = 'primary',
             variant = 'text',
             isUpper = true,
+            fullWidth = false,
             children = 'Button',
             ...props
         },
@@ -31,6 +33,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
                     styles[color],
                     styles[variant],
                     isUpper && styles.upper,
+                    fullWidth && styles.fullWidth,
                 ].join(' ')}
                 {...props}
             >

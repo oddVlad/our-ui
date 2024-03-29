@@ -1,6 +1,6 @@
 import React, { forwardRef, useState } from 'react';
-import CheckIcon from '../../../assets/icons/check.svg';
-import IndIcon from '../../../assets/icons/minus.svg';
+import { ReactComponent as CheckIcon } from '../../../assets/icons/check.svg';
+import { ReactComponent as IndIcon } from '../../../assets/icons/minus.svg';
 import styles from './styles.module.scss';
 
 export interface ICheckboxProps
