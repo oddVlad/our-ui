@@ -26,16 +26,11 @@
             background: rgba(color.$primary, 0.2);
         }
 
-        &:focus {
-            outline-offset: 2px;
-            outline: 2px solid color.$primary-dark;
+        &.contained:hover {
+            background: rgba(color.$primary-dark, 0.8);
         }
 
-        &.contained:hover{
-            background: rgba(color.$primary-dark, .8);
-        }
-
-        &.contained:active{
+        &.contained:active {
             background: rgba(color.$primary-dark, 1);
         }
     }
@@ -53,16 +48,11 @@
             background: rgba(color.$secondary, 0.2);
         }
 
-        &:focus {
-            outline-offset: 2px;
-            outline: 2px solid color.$secondary-dark;
+        &.contained:hover {
+            background: rgba(color.$secondary-dark, 0.8);
         }
 
-        &.contained:hover{
-            background: rgba(color.$secondary-dark, .8);
-        }
-
-        &.contained:active{
+        &.contained:active {
             background: rgba(color.$secondary-dark, 1);
         }
     }
@@ -80,16 +70,11 @@
             background: rgba(color.$success, 0.2);
         }
 
-        &:focus {
-            outline-offset: 2px;
-            outline: 2px solid color.$success-dark;
+        &.contained:hover {
+            background: rgba(color.$success-dark, 0.8);
         }
 
-        &.contained:hover{
-            background: rgba(color.$success-dark, .8);
-        }
-
-        &.contained:active{
+        &.contained:active {
             background: rgba(color.$success-dark, 1);
         }
     }
@@ -107,16 +92,11 @@
             background: rgba(color.$error, 0.2);
         }
 
-        &:focus {
-            outline-offset: 2px;
-            outline: 2px solid color.$error-dark;
+        &.contained:hover {
+            background: rgba(color.$error-dark, 0.8);
         }
 
-        &.contained:hover{
-            background: rgba(color.$error-dark, .8);
-        }
-
-        &.contained:active{
+        &.contained:active {
             background: rgba(color.$error-dark, 1);
         }
     }
@@ -157,9 +137,10 @@
         border-color: color.$disabled;
     }
 
-        &:focus:not(:focus-visible) {
-            outline: none;
-        }
+    &:focus:focus-visible {
+        outline: 2px solid black;
+        outline-offset: 2px;
+    }
 }
 
 .upper {

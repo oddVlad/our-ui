@@ -1,9 +1,7 @@
 @use '../../styles/colors' as color;
 
 .popover_content {
-    position: absolute;
-    top: 100%;
-    left: 0;
+    position: fixed;
     z-index: 999;
     background-color: white;
     border: 1px solid color.$gray-light;

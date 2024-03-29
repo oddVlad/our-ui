@@ -1,7 +1,11 @@
 @use '../../styles/colors' as color;
 
-.checkbox {
+.checkbox_container {
     position: relative;
+}
+
+.checkbox {
+    width: fit-content;
     border: 2px solid color.$gray-light;
     background-color: rgba(color.$gray-light, 0.1);
     border-radius: 20%;
@@ -39,13 +43,14 @@
 }
 
 .hidden_checkbox {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 0;
-    height: 0;
-    opacity: 0;
+    border: 0; 
+    clip: rect(0 0 0 0); 
+    height: 1px; 
+    margin: -1px; 
+    overflow: hidden; 
+    padding: 0; 
+    position: absolute; 
+    width: 1px;
 
     &:checked + .checkbox {
         &.primary {
@@ -87,7 +92,7 @@
         box-shadow: none;
     }
 
-    &:focus + .checkbox {
+    &:focus:focus-visible + .checkbox {
         outline: 2px solid black;
         outline-offset: 2px;
     }
@@ -95,6 +100,7 @@
 
 .checkbox_mark {
     fill: white;
+    vertical-align: top;
 
     &.small {
         width: 20px;
