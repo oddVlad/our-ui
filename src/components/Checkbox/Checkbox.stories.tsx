@@ -27,7 +27,12 @@ export const Default = (props: Story) => {
         setChecked((prev) => !prev);
     };
 
-    return <Checkbox checked={isChecked} onChange={handleChange} {...props} />;
+    return (
+        <label style={{ display: 'flex', alignItems: 'center' }}>
+            <Checkbox checked={isChecked} onChange={handleChange} {...props} />
+            Checkbox
+        </label>
+    );
 };
 
 export const Color = () => (
